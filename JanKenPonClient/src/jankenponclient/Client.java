@@ -35,17 +35,16 @@ class Listen extends Thread {
                     case Disconnect:
                         break;
                     case Text:
-                        //Game.ThisGame.txt_receive.setText(received.content.toString());
+                        Game.ThisGame.txt_receive.setText(received.content.toString());
                         break;
                     case Selected:
-                        //Game.ThisGame.RivalSelection = (int) received.content;
+                        Game.ThisGame.RivalSelection = (int) received.content;
 
                         break;
                     case RivalConnected:
-                        //String name = received.content.toString();
-                        //Game.ThisGame.txt_rival_name.setText(name);
-                        //Game.ThisGame.tmr_slider.start();
-
+                        String name = received.content.toString();
+                        Game.ThisGame.txt_rival_name.setText(name);
+                        Game.ThisGame.tmr_slider.start();
                         break;
                     case Finish:
                         break;
