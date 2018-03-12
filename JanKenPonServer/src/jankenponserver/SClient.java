@@ -120,11 +120,9 @@ public class SClient {
                 try {
                     Server.pairTwo.acquire(1);
                     
-                    if (TheClient.paired) {
-                        return;
-                    }
+                    if (!TheClient.paired) {   
                     SClient crival= null;
-                    while (crival == null) {
+                    while (crival == null && TheClient.soket.isConnected()) {
                         for (SClient clnt : Server.Clients) {
                             if (TheClient!=clnt && clnt.rival2==null) {
                                 crival=clnt;
@@ -137,11 +135,6 @@ public class SClient {
                         }
                         sleep(1000);
                     }
-
-       
-
-            
-
                     Message msg1 = new Message(Message.Message_Type.RivalConnected);
                     msg1.content = TheClient.name;
                     Server.Send(TheClient.rival2, msg1);
@@ -149,8 +142,7 @@ public class SClient {
                     Message msg2 = new Message(Message.Message_Type.RivalConnected);
                     msg2.content = TheClient.rival2.name;
                     Server.Send(TheClient, msg2);
-
-                    
+                    }
                     Server.pairTwo.release(1);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(PairingThread.class.getName()).log(Level.SEVERE, null, ex);
