@@ -34,6 +34,8 @@ class Listen extends Thread {
                     case RivalConnected:
                         String name = received.content.toString();
                         Game.ThisGame.txt_rival_name.setText(name);
+                        Game.ThisGame.btn_pick.setEnabled(false);
+                        Game.ThisGame.btn_send_message.setEnabled(false);
                         Game.ThisGame.tmr_slider.start();
                         break;
                     case Disconnect:

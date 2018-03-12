@@ -140,7 +140,7 @@ public class Game extends javax.swing.JFrame {
         rbtn_tas = new javax.swing.JRadioButton();
         rbtn_kagit = new javax.swing.JRadioButton();
         rbtn_makas = new javax.swing.JRadioButton();
-        txt_send = new javax.swing.JTextField();
+        txt_send = new java.awt.TextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -189,7 +189,7 @@ public class Game extends javax.swing.JFrame {
         lbl_gamer1.getAccessibleContext().setAccessibleName("");
 
         getContentPane().add(pnl_gamer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, 259));
-        getContentPane().add(txt_receive, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, 250, 128));
+        getContentPane().add(txt_receive, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, 250, 128));
         txt_receive.getAccessibleContext().setAccessibleName("");
 
         btn_send_message.setText("Send");
@@ -236,9 +236,7 @@ public class Game extends javax.swing.JFrame {
             }
         });
         getContentPane().add(rbtn_makas, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, -1, -1));
-
-        txt_send.setText("jTextField1");
-        getContentPane().add(txt_send, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, 130, -1));
+        getContentPane().add(txt_send, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 250, 128));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -249,8 +247,8 @@ public class Game extends javax.swing.JFrame {
         lbl_gamer1.setIcon(icons_left[0]);
         btn_connect.setEnabled(false);
         txt_name.setEnabled(false);
-        btn_pick.setEnabled(true);
-        btn_send_message.setEnabled(true);
+        btn_pick.setEnabled(false);
+        btn_send_message.setEnabled(false);
         rbtn_kagit.setEnabled(true);
         rbtn_makas.setEnabled(true);
         rbtn_tas.setEnabled(true);
@@ -361,6 +359,6 @@ public class Game extends javax.swing.JFrame {
     public javax.swing.JTextField txt_name;
     public java.awt.TextArea txt_receive;
     public javax.swing.JTextField txt_rival_name;
-    private javax.swing.JTextField txt_send;
+    public java.awt.TextArea txt_send;
     // End of variables declaration//GEN-END:variables
 }
