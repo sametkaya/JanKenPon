@@ -68,8 +68,8 @@ public class Game extends javax.swing.JFrame {
                         int g = rand.nextInt(2);
                         lbl_gamer2.setIcon(icons_right[g]);
                     } else {
+                        
                         lbl_gamer2.setIcon(icons_right[RivalSelection]);
-
                         Thread.sleep(4000);
                         if (myselection == 0 && RivalSelection == 2) {
                             lbl_gamer1.setIcon(icons[2]);
@@ -85,7 +85,7 @@ public class Game extends javax.swing.JFrame {
                             lbl_gamer2.setIcon(icons[3]);
                         }
                         tmr_slider.stop();
-                        Reset();
+                        //Reset();
                         
                         
 
@@ -135,12 +135,12 @@ public class Game extends javax.swing.JFrame {
         pnl_gamer1 = new javax.swing.JPanel();
         lbl_gamer1 = new javax.swing.JLabel();
         txt_receive = new java.awt.TextArea();
-        txt_send = new java.awt.TextArea();
         btn_send_message = new javax.swing.JButton();
         txt_rival_name = new javax.swing.JTextField();
         rbtn_tas = new javax.swing.JRadioButton();
         rbtn_kagit = new javax.swing.JRadioButton();
         rbtn_makas = new javax.swing.JRadioButton();
+        txt_send = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -192,9 +192,6 @@ public class Game extends javax.swing.JFrame {
         getContentPane().add(txt_receive, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, 250, 128));
         txt_receive.getAccessibleContext().setAccessibleName("");
 
-        getContentPane().add(txt_send, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 250, 128));
-        txt_send.getAccessibleContext().setAccessibleName("");
-
         btn_send_message.setText("Send");
         btn_send_message.setEnabled(false);
         btn_send_message.addActionListener(new java.awt.event.ActionListener() {
@@ -240,6 +237,9 @@ public class Game extends javax.swing.JFrame {
         });
         getContentPane().add(rbtn_makas, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, -1, -1));
 
+        txt_send.setText("jTextField1");
+        getContentPane().add(txt_send, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, 130, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -283,6 +283,7 @@ public class Game extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         Message msg = new Message(Message.Message_Type.Text);
+        String x= txt_send.getText();
         msg.content = txt_send.getText();
         Client.Send(msg);
         txt_send.setText("");
@@ -360,6 +361,6 @@ public class Game extends javax.swing.JFrame {
     public javax.swing.JTextField txt_name;
     public java.awt.TextArea txt_receive;
     public javax.swing.JTextField txt_rival_name;
-    public java.awt.TextArea txt_send;
+    private javax.swing.JTextField txt_send;
     // End of variables declaration//GEN-END:variables
 }
