@@ -79,7 +79,6 @@ public class SClient {
                             TheClient.name = received.content.toString();
                             TheClient.pairThread.start();
                             break;
-
                         case Disconnect:
                             break;
                         case Text:
@@ -90,7 +89,7 @@ public class SClient {
                             //gelen seçim yapıldı mesajını rakibe gönder
                             Server.Send(TheClient.rival2, received);
                             break;
-                        case Finish:
+                        case Bitis:
                             break;
 
                     }
@@ -144,11 +143,11 @@ public class SClient {
             
 
                     Message msg1 = new Message(Message.Message_Type.RivalConnected);
-                    msg1.content = TheClient.rival2.name;
+                    msg1.content = TheClient.name;
                     Server.Send(TheClient.rival2, msg1);
 
                     Message msg2 = new Message(Message.Message_Type.RivalConnected);
-                    msg2.content = TheClient.name;
+                    msg2.content = TheClient.rival2.name;
                     Server.Send(TheClient, msg2);
 
                     

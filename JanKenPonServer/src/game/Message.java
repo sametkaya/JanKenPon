@@ -15,7 +15,7 @@ import static game.Message.Message_Type.None;
  */
 
 public class Message implements java.io.Serializable {
-    public static enum Message_Type {None, Name, Disconnect,RivalConnected, Text, Selected, Finish,Start,}
+    public static enum Message_Type {None, Name, Disconnect,RivalConnected, Text, Selected, Bitis,Start,}
     
     public Message_Type type;
     public Object content;

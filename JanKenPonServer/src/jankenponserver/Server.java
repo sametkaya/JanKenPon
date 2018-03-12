@@ -8,7 +8,6 @@ package jankenponserver;
 import game.Message;
 import java.io.IOException;
 
-import static java.lang.Thread.sleep;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -30,8 +29,8 @@ class ServerThread extends Thread {
                 Server.Display("Client Bekleniyor...");
                 Socket clientSocket = Server.serverSocket.accept();
                 Server.Display("Client Geldi...");
-                                SClient nclient = new SClient(clientSocket, Server.IdClient);
-               nclient.listenThread.start();
+                SClient nclient = new SClient(clientSocket, Server.IdClient);
+                nclient.listenThread.start();
 
                 Server.IdClient++;
                 Server.Clients.add(nclient);
@@ -42,8 +41,6 @@ class ServerThread extends Thread {
         }
     }
 }
-
-
 
 public class Server {
 
@@ -56,7 +53,7 @@ public class Server {
     public static ServerThread runThread;
     //public static PairingThread pairThread;
 
-   public static ArrayList<SClient> Clients = new ArrayList<>();
+    public static ArrayList<SClient> Clients = new ArrayList<>();
 
     public static Semaphore pairTwo = new Semaphore(1, true);
 
@@ -67,7 +64,7 @@ public class Server {
 
             Server.runThread = new ServerThread();
             Server.runThread.start();
-            
+
         } catch (IOException ex) {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -89,5 +86,4 @@ public class Server {
 
     }
 
- 
 }
