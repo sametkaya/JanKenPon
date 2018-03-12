@@ -85,7 +85,7 @@ public class Game extends javax.swing.JFrame {
                             lbl_gamer2.setIcon(icons[3]);
                         }
                         tmr_slider.stop();
-                        
+                        Reset();
                         
                         
 
@@ -281,10 +281,11 @@ public class Game extends javax.swing.JFrame {
 
     private void btn_send_messageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_send_messageActionPerformed
         // TODO add your handling code here:
-        txt_send.setText("");
+        
         Message msg = new Message(Message.Message_Type.Text);
         msg.content = txt_send.getText();
         Client.Send(msg);
+        txt_send.setText("");
 
     }//GEN-LAST:event_btn_send_messageActionPerformed
 

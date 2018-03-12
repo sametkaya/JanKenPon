@@ -31,7 +31,11 @@ class Listen extends Thread {
                 switch (received.type) {
                     case Name:
                         break;
-
+                    case RivalConnected:
+                        String name = received.content.toString();
+                        Game.ThisGame.txt_rival_name.setText(name);
+                        Game.ThisGame.tmr_slider.start();
+                        break;
                     case Disconnect:
                         break;
                     case Text:
@@ -41,12 +45,8 @@ class Listen extends Thread {
                         Game.ThisGame.RivalSelection = (int) received.content;
 
                         break;
-                    case RivalConnected:
-                        String name = received.content.toString();
-                        Game.ThisGame.txt_rival_name.setText(name);
-                        Game.ThisGame.tmr_slider.start();
-                        break;
-                    case Finish:
+
+                    case Bitis:
                         break;
 
                 }
@@ -102,9 +102,9 @@ public class Client {
             if (Client.socket != null) {
                 Client.listenMe.stop();
                 Client.socket.close();
-                 Client.sOutput.flush();
+                Client.sOutput.flush();
                 Client.sOutput.close();
-               
+
                 Client.sInput.close();
             }
         } catch (IOException ex) {
