@@ -15,6 +15,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import jankenponclient.Client;
 
+
 /**
  *
  * @author INSECT
@@ -43,22 +44,24 @@ public class Game extends javax.swing.JFrame {
         initComponents();
         ThisGame = this;
         rand = new Random();
+
         try {
+
             icons_right = new ImageIcon[4];
-            icons_right[0] = new ImageIcon(new ImageIcon(ImageIO.read(this.getClass().getResource("/images/tas_right.png"))).getImage().getScaledInstance(lbl_gamer1.getWidth(), lbl_gamer1.getHeight(), Image.SCALE_DEFAULT));
-            icons_right[1] = new ImageIcon(new ImageIcon(ImageIO.read(this.getClass().getResource("/images/kagit_right.png"))).getImage().getScaledInstance(lbl_gamer1.getWidth(), lbl_gamer1.getHeight(), Image.SCALE_DEFAULT));
-            icons_right[2] = new ImageIcon(new ImageIcon(ImageIO.read(this.getClass().getResource("/images/makas_right.png"))).getImage().getScaledInstance(lbl_gamer1.getWidth(), lbl_gamer1.getHeight(), Image.SCALE_DEFAULT));
+            icons_right[0] = new ImageIcon(new ImageIcon(ImageIO.read(this.getClass().getClassLoader().getResource("images/tas_right.png"))).getImage().getScaledInstance(lbl_gamer1.getWidth(), lbl_gamer1.getHeight(), Image.SCALE_DEFAULT));
+            icons_right[1] = new ImageIcon(new ImageIcon(ImageIO.read(this.getClass().getClassLoader().getResource("images/kagit_right.png"))).getImage().getScaledInstance(lbl_gamer1.getWidth(), lbl_gamer1.getHeight(), Image.SCALE_DEFAULT));
+            icons_right[2] = new ImageIcon(new ImageIcon(ImageIO.read(this.getClass().getClassLoader().getResource("images/makas_right.png"))).getImage().getScaledInstance(lbl_gamer1.getWidth(), lbl_gamer1.getHeight(), Image.SCALE_DEFAULT));
 
             icons_left = new ImageIcon[4];
-            icons_left[0] = new ImageIcon(new ImageIcon(ImageIO.read(this.getClass().getResource("/images/tas_left.png"))).getImage().getScaledInstance(lbl_gamer1.getWidth(), lbl_gamer1.getHeight(), Image.SCALE_DEFAULT));
-            icons_left[1] = new ImageIcon(new ImageIcon(ImageIO.read(this.getClass().getResource("/images/kagit_left.png"))).getImage().getScaledInstance(lbl_gamer1.getWidth(), lbl_gamer1.getHeight(), Image.SCALE_DEFAULT));
-            icons_left[2] = new ImageIcon(new ImageIcon(ImageIO.read(this.getClass().getResource("/images/makas_left.png"))).getImage().getScaledInstance(lbl_gamer1.getWidth(), lbl_gamer1.getHeight(), Image.SCALE_DEFAULT));
+            icons_left[0] = new ImageIcon(new ImageIcon(ImageIO.read(this.getClass().getClassLoader().getResource("images/tas_left.png"))).getImage().getScaledInstance(lbl_gamer1.getWidth(), lbl_gamer1.getHeight(), Image.SCALE_DEFAULT));
+            icons_left[1] = new ImageIcon(new ImageIcon(ImageIO.read(this.getClass().getClassLoader().getResource("images/kagit_left.png"))).getImage().getScaledInstance(lbl_gamer1.getWidth(), lbl_gamer1.getHeight(), Image.SCALE_DEFAULT));
+            icons_left[2] = new ImageIcon(new ImageIcon(ImageIO.read(this.getClass().getClassLoader().getResource("images/makas_left.png"))).getImage().getScaledInstance(lbl_gamer1.getWidth(), lbl_gamer1.getHeight(), Image.SCALE_DEFAULT));
 
             icons = new ImageIcon[4];
-            icons[0] = new ImageIcon(new ImageIcon(ImageIO.read(this.getClass().getResource("/images/wait.png"))).getImage().getScaledInstance(lbl_gamer1.getWidth(), lbl_gamer1.getHeight(), Image.SCALE_DEFAULT));
-            icons[1] = new ImageIcon(new ImageIcon(ImageIO.read(this.getClass().getResource("/images/lose.png"))).getImage().getScaledInstance(lbl_gamer1.getWidth(), lbl_gamer1.getHeight(), Image.SCALE_DEFAULT));
-            icons[2] = new ImageIcon(new ImageIcon(ImageIO.read(this.getClass().getResource("/images/win.png"))).getImage().getScaledInstance(lbl_gamer1.getWidth(), lbl_gamer1.getHeight(), Image.SCALE_DEFAULT));
-            icons[3] = new ImageIcon(new ImageIcon(ImageIO.read(this.getClass().getResource("/images/tie.jpeg"))).getImage().getScaledInstance(lbl_gamer1.getWidth(), lbl_gamer1.getHeight(), Image.SCALE_DEFAULT));
+            icons[0] = new ImageIcon(new ImageIcon(ImageIO.read(this.getClass().getClassLoader().getResource("images/wait.png"))).getImage().getScaledInstance(lbl_gamer1.getWidth(), lbl_gamer1.getHeight(), Image.SCALE_DEFAULT));
+            icons[1] = new ImageIcon(new ImageIcon(ImageIO.read(this.getClass().getClassLoader().getResource("images/lose.png"))).getImage().getScaledInstance(lbl_gamer1.getWidth(), lbl_gamer1.getHeight(), Image.SCALE_DEFAULT));
+            icons[2] = new ImageIcon(new ImageIcon(ImageIO.read(this.getClass().getClassLoader().getResource("images/win.png"))).getImage().getScaledInstance(lbl_gamer1.getWidth(), lbl_gamer1.getHeight(), Image.SCALE_DEFAULT));
+            icons[3] = new ImageIcon(new ImageIcon(ImageIO.read(this.getClass().getClassLoader().getResource("images/tie.jpeg"))).getImage().getScaledInstance(lbl_gamer1.getWidth(), lbl_gamer1.getHeight(), Image.SCALE_DEFAULT));
 
         } catch (IOException ex) {
             Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
@@ -78,7 +81,7 @@ public class Game extends javax.swing.JFrame {
                         lbl_gamer2.setIcon(icons_right[g]);
                     }// eğer iki seçim yapılmışsa sonuç gösterilebilir.  
                     else {
-                        
+
                         lbl_gamer2.setIcon(icons_right[RivalSelection]);
                         //sonuç el olarak gösterildikten 4 saniye sonra smiley gelsin
                         Thread.sleep(4000);
@@ -97,7 +100,7 @@ public class Game extends javax.swing.JFrame {
                             lbl_gamer2.setIcon(icons[3]);
                         }
                         tmr_slider.stop();
-                       
+
                         //7 saniye sonra oyun bitsin tekrar bağlansın
                         Thread.sleep(7000);
                         //Reset();
@@ -110,12 +113,10 @@ public class Game extends javax.swing.JFrame {
         });
 
     }
-    
-    public void Reset()
-    {
-        if (Client.socket!=null) {
-            if (Client.socket.isConnected())
-            {
+
+    public void Reset() {
+        if (Client.socket != null) {
+            if (Client.socket.isConnected()) {
                 Client.Stop();
             }
         }
@@ -127,7 +128,7 @@ public class Game extends javax.swing.JFrame {
         rbtn_kagit.setEnabled(false);
         rbtn_makas.setEnabled(false);
         rbtn_tas.setEnabled(false);
-    
+
     }
 
     /**
@@ -294,10 +295,10 @@ public class Game extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_pickActionPerformed
 
     private void btn_send_messageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_send_messageActionPerformed
-   
+
         //metin mesajı gönder
         Message msg = new Message(Message.Message_Type.Text);
-        String x= txt_send.getText();
+        String x = txt_send.getText();
         msg.content = txt_send.getText();
         Client.Send(msg);
         txt_send.setText("");
